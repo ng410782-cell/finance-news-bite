@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FinBites - Smart & Interactive Finance News</title>
+    <style>
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; margin: 0; padding: 20px; background-color: #f0f2f5; }
+        .header { text-align: center; margin-bottom: 25px; }
+        h1 { color: #1a252f; margin-bottom: 5px; }
+        p.subtitle { color: #576574; font-size: 15px; margin-top: 0; }
+        
+        .toggle-container { display: flex; justify-content: center; max-width: 400px; margin: 0 auto 25px auto; background: #e0e0e0; border-radius: 25px; padding: 4px; }
+        .toggle-btn { flex: 1; padding: 10px 20px; border: none; background: transparent; cursor: pointer; font-weight: bold; color: #576574; border-radius: 20px; transition: 0.3s; font-size: 14px; }
+        .toggle-btn.active { background: #2e86de; color: white; box-shadow: 0 2px 6px rgba(0,0,0,0.15); }
+
+        .feed-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; max-width: 1000px; margin: 0 auto; }
+
+        /* Card Flip Styling */
+        .card-container { perspective: 1000px; height: 280px; }
+        .card { width: 100%; height: 100%; position: relative; transform-style: preserve-3d; transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1); cursor: pointer; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.08); }
+        .card.flipped { transform: rotateY(180deg); }
+
+        .card-front, .card-back { position: absolute; width: 100%; height: 100%; backface-visibility: hidden; border-radius: 12px; padding: 20px; box-sizing: border-box; display: flex; flex-direction: column; justify-content: space-between; }
+        .card-front { background: white; border-top: 5px solid #2e86de; }
+        .card-back { background: #1e272e; color: white; transform: rotateY(180deg); border-top: 5px solid #10ac84; }
+
+        .tag { display: inline-block; padding: 4px 8px; border-radius: 12px; font-size: 12px; font-weight: bold; margin-bottom: 10px; width: fit-content; }
+        .tag-india { background: #ffeaa7; color: #d63031; }
+        .tag-global { background: #c7ecee; color: #222f3e; }
+
+        h3 { margin: 0 0 10px 0; font-size: 16px; color: #2c3e50; line-height: 1.4; }
+        .card-back h3 { color: #10ac84; }
+        p.summary { font-size: 13.5px; color: #546de5; line-height: 1.5; margin: 0; }
+        .card-back p { font-size: 13.5px; color: #dcdde1; line-height: 1.5; margin: 0; }
+
+        .flip-btn { background: #2e86de; color: white; border: none; padding: 8px 14px; border-radius: 6px; font-weight: bold; font-size: 12px; align-self: flex-start; margin-top: 10px; cursor: pointer; }
+        .back-btn { background: #10ac84; color: white; border: none; padding: 8px 14px; border-radius: 6px; font-weight: bold; font-size: 12px; align-self: flex-start; margin-top: 10px; cursor: pointer; }
+    </style>
+</head>
+<body>
+
+<div class="header">
+    <h1>⚡ FinBites</h1>
+    <p class="subtitle">Financial news made effortless. Click any card to see why it matters to you!</p>
+    
+    <div class="toggle-container">
+        <button class="toggle-btn active" id="indiaBtn" onclick="switchFeed('india')">🇮🇳 Indian Economy</button>
+        <button class="toggle-btn" id="globalBtn" onclick="switchFeed('global')">🌍 Global Markets</button>
+    </div>
+</div>
+
+<div class="feed-grid" id="newsGrid"></div>
+
+<script>
+const newsData = {
+    india: [
+        {
+            tag: "🏦 RBI Rate Policy",
+            title: "RBI Keeps Repo Rate Unchanged at 6.5%",
+            summary: "The Reserve Bank of India decided to hold interest rates steady to control inflation while keeping GDP growth momentum strong.",
+            care: "Loan interest rates (home & auto loans) won't increase right now. If you have a floating rate loan, your EMIs will stay predictable.",
+            takeaway: "Borrowing costs remain stable, making it a decent time to plan large purchases."
+        },
+        {
+            tag: "📊 Stock Market",
+            title: "IT Stocks Lead Rally in Benchmark Indices",
+            summary: "Major Indian tech companies saw strong foreign investor inflows following strong earnings reports and digital transformation deals.",
+            care: "If you invest in Indian equity mutual funds, your portfolio likely saw a healthy boost today.",
+            takeaway: "Strong corporate earnings are boosting domestic investor confidence."
+        },
+        {
+            tag: "🛍️ Consumer Trends",
+            title: "GST Revenue Collections Surge Past Record Highs",
+            summary: "Higher consumer spending during festive seasons pushed national GST tax collection to historic levels across major metro states.",
+            care: "Higher tax revenues mean the government has more funds for public infrastructure and welfare projects without raising tax rates.",
+            takeaway: "Consumer spending in India remains robust despite global economic slowdowns."
+        }
+    ],
+    global: [
+        {
+            tag: "🇺🇸 US Federal Reserve",
+            title: "Fed Signals Potential Rate Cuts Ahead",
+            summary: "US central bank officials hinted at loosening monetary policy as inflation cools down faster than expected.",
+            care: "Lower US interest rates generally attract foreign money into emerging markets like India, pushing up local stock prices and strengthening currency.",
+            takeaway: "A softer US policy is good news for global investment flows."
+        },
+        {
+            tag: "🛢️ Commodities",
+            title: "Global Crude Oil Prices Drop 3%",
+            summary: "Oil prices fell sharply due to increased supply from non-OPEC nations and slowing demand in major industrial sectors.",
+            care: "India imports 85% of its crude oil. Lower oil prices reduce the national import bill, keeping petrol/diesel prices under control.",
+            takeaway: "Lower crude prices reduce overall inflation pressure on everyday goods."
+        },
+        {
+            tag: "📱 Tech Industry",
+            title: "Global Tech Giants Boost AI Infrastructure Spending",
+            summary: "Leading tech firms are committing billions to build next-generation data centers and AI hardware processing chips.",
+            care: "Creates major demand for IT service providers and semiconductor suppliers, generating tech jobs and digital growth.",
+            takeaway: "The AI wave continues to drive global capital expenditure."
+        }
+    ]
+};
+
+let currentRegion = 'india';
+
+function renderCards(region) {
+    const grid = document.getElementById('newsGrid');
+    grid.innerHTML = '';
+
+    newsData[region].forEach((item, index) => {
+        const cardContainer = document.createElement('div');
+        cardContainer.className = 'card-container';
+
+        const tagClass = region === 'india' ? 'tag-india' : 'tag-global';
+
+        cardContainer.innerHTML = `
+            <div class="card" onclick="this.classList.toggle('flipped')">
+                <div class="card-front">
+                    <div>
+                        <span class="tag ${tagClass}">${item.tag}</span>
+                        <h3>${item.title}</h3>
+                        <p class="summary">${item.summary}</p>
+                    </div>
+                    <button class="flip-btn">Why Should I Care? 💡</button>
+                </div>
+                <div class="card-back">
+                    <div>
+                        <h3>💡 The Direct Impact</h3>
+                        <p><strong>Effect:</strong> ${item.care}</p>
+                        <br>
+                        <p><strong>Bottom Line:</strong> ${item.takeaway}</p>
+                    </div>
+                    <button class="back-btn">↩️ Back to Story</button>
+                </div>
+            </div>
+        `;
+        grid.appendChild(cardContainer);
+    });
+}
+
+function switchFeed(region) {
+    currentRegion = region;
+    document.getElementById('indiaBtn').classList.toggle('active', region === 'india');
+    document.getElementById('globalBtn').classList.toggle('active', region === 'global');
+    renderCards(region);
+}
+
+// Initial Render
+renderCards('india');
+</script>
+
+</body>
+</html>
