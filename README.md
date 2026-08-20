@@ -1,6 +1,6 @@
-# ⚡ FinBites - Smart & Interactive Finance News 📰
+# ⚡ FinBites - Automated Live Finance News Hub 📰
 
-A lightweight, flip-card news engine designed to make Indian and Global financial news fast, engaging, and easy to understand without reading long articles.
+An automated, interactive financial news aggregator that pools live economic headlines from top Indian and global news outlets into bite-sized, interactive 3D flip cards.
 
 🔗 **[Live Demo](https://ng410782-cell.github.io/finance-news-bite/)**
 
@@ -8,15 +8,29 @@ A lightweight, flip-card news engine designed to make Indian and Global financia
 
 ## 🌟 Key Features
 
-- **3D Interactive Flip Cards:** Flips to instantly answer the core question: *"Why Should I Care?"*
-- **Dual Region Switcher:** Toggle between **Indian Economy** (RBI, GST, Nifty) and **Global Markets** (US Fed, Crude Oil, Tech).
-- **Practical Impact Breakdowns:** Translates economic jargon into clear real-world outcomes for personal savings, loans, and mutual funds.
-- **Zero Jargon Focus:** Designed specifically for non-finance readers who want bottom-line takeaways.
+- **Automated Real-Time News Aggregation:** Connects directly to live RSS feeds via asynchronous API endpoints—no daily manual code updates required.
+- **Multi-Source Outlet Pooling:** 
+  - **🇮🇳 Indian Economy:** Aggregates live headlines from *The Economic Times*, *Moneycontrol*, and *Livemint*.
+  - **🌍 Global Markets:** Aggregates global economic coverage from *CNBC* and *MarketWatch*.
+- **3D Flip-Card UI:** Converts complex financial news into clean cards that flip to answer the essential question: *"Why Should I Care?"*
+- **Direct Source Attribution & Article Links:** Displays source badges on each card with one-click links to read full stories on the publisher's site.
+- **Smart Text Sanitization:** Strips raw HTML tags and truncates long RSS excerpts automatically for uniform, scannable cards.
 
 ---
 
-## 🛠️ Built With
+## 🛠️ Architecture & Tech Stack
 
-- **HTML5 & CSS3** – Responsive CSS Grid layout and 3D transform animations
-- **JavaScript (ES6)** – Dynamic feed rendering and flip-state interactions
-- **GitHub Pages** – Automated static web hosting
+- **HTML5 & CSS3:** Custom 3D CSS `perspective` transform animations, responsive CSS Grid layout, and source badge styling.
+- **JavaScript (ES6+):** 
+  - `Promise.all()` for concurrent multi-feed fetching.
+  - Asynchronous JSON fetching via `rss2json` API wrappers.
+  - Client-side sorting algorithms to organize news chronologically across multiple sources.
+- **GitHub Pages:** Automated deployment and hosting.
+
+---
+
+## 🚀 How to Run Locally
+
+1. Clone this repository:
+   ```bash
+   git clone [https://github.com/ng410782-cell/finance-news-bite.git](https://github.com/ng410782-cell/finance-news-bite.git)
