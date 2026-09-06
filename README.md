@@ -1,36 +1,29 @@
-# ⚡ FinBites - Automated Live Finance News Hub 📰
+# ⚡ FinBites - Automated Financial News & Cross-Verification Engine
 
-An automated, interactive financial news aggregator that pools live economic headlines from top Indian and global news outlets into bite-sized, interactive 3D flip cards.
-
-🔗 **[Live Demo](https://ng410782-cell.github.io/finance-news-bite/)**
+FinBites is a web-based financial news aggregator that parses live economic feeds, performs multi-source cross-referencing, and extracts concise "Why It Matters" takeaways while separating objective data from publisher commentary.
 
 ---
 
-## 🌟 Key Features
+## Key Features & Solution
 
-- **Automated Real-Time News Aggregation:** Connects directly to live RSS feeds via asynchronous API endpoints—no daily manual code updates required.
-- **Multi-Source Outlet Pooling:** 
-  - **🇮🇳 Indian Economy:** Aggregates live headlines from *The Economic Times*, *Moneycontrol*, and *Livemint*.
-  - **🌍 Global Markets:** Aggregates global economic coverage from *CNBC* and *MarketWatch*.
-- **3D Flip-Card UI:** Converts complex financial news into clean cards that flip to answer the essential question: *"Why Should I Care?"*
-- **Direct Source Attribution & Article Links:** Displays source badges on each card with one-click links to read full stories on the publisher's site.
-- **Smart Text Sanitization:** Strips raw HTML tags and truncates long RSS excerpts automatically for uniform, scannable cards.
+* **Multi-Source Cross-Corroboration:** Aggregates coverage of market events across independent financial feeds (e.g., Moneycontrol, Economic Times, Screener).
+* **Consensus Scoring Engine:** Evaluates whether numerical claims (EBITDA margins, revenue metrics, policy changes) are reported consistently across multiple sources.
+* **Fact vs. Editorial Separation:** Isolates verified regulatory figures from reporter speculation, tagging opinionated commentary as unverified sentiment.
+* **Bite-Sized Actionable Summaries:** Converts complex news articles into structured key points for non-finance professionals.
 
 ---
 
-## 🛠️ Architecture & Tech Stack
+## Verification Methodology
 
-- **HTML5 & CSS3:** Custom 3D CSS `perspective` transform animations, responsive CSS Grid layout, and source badge styling.
-- **JavaScript (ES6+):** 
-  - `Promise.all()` for concurrent multi-feed fetching.
-  - Asynchronous JSON fetching via `rss2json` API wrappers.
-  - Client-side sorting algorithms to organize news chronologically across multiple sources.
-- **GitHub Pages:** Automated deployment and hosting.
+1. **Feed Aggregation:** Ingests headlines and article texts from news feeds.
+2. **Metric Extraction:** Identifies hard numerical data (percentages, revenue, debt metrics).
+3. **Cross-Source Matching:** Validates if identical figures appear across at least 3 independent media sources.
+4. **Source Ratings:**
+   * **High Consensus:** Claim appears consistently across multiple major outlets.
+   * **Single-Source Claim:** Claim appears in only one source and is flagged for manual verification.
 
 ---
 
-## 🚀 How to Run Locally
+## How to Run
 
-1. Clone this repository:
-   ```bash
-   git clone [https://github.com/ng410782-cell/finance-news-bite.git](https://github.com/ng410782-cell/finance-news-bite.git)
+1. Open `index.html` in any web browser or view via GitHub Pages.
