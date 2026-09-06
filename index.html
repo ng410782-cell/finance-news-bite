@@ -3,155 +3,172 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FinBites - Financial News & Verification Engine</title>
+    <title>FinBites - Simplified Financial News for Students</title>
     <style>
         :root {
-            --bg: #0f172a;
+            --bg-dark: #0f172a;
             --card-bg: #1e293b;
             --text-main: #f8fafc;
             --text-muted: #94a3b8;
-            --accent: #38bdf8;
-            --success: #22c55e;
-            --warning: #f59e0b;
-            --border: #334155;
+            --accent-blue: #38bdf8;
+            --accent-green: #22c55e;
+            --border-color: #334155;
         }
 
         body {
-            font-family: system-ui, -apple-system, sans-serif;
-            background-color: var(--bg);
+            font-family: 'Segoe UI', Roboto, -apple-system, sans-serif;
+            background-color: var(--bg-dark);
             color: var(--text-main);
             margin: 0;
             padding: 24px;
         }
 
         .container {
-            max-width: 1000px;
+            max-width: 1100px;
             margin: 0 auto;
         }
 
         header {
             text-align: center;
-            margin-bottom: 32px;
+            margin-bottom: 28px;
         }
 
         h1 {
-            font-size: 32px;
-            color: var(--accent);
-            margin-bottom: 8px;
+            font-size: 36px;
+            color: var(--accent-blue);
+            margin: 0 0 8px 0;
+            letter-spacing: -0.5px;
         }
 
         .subtitle {
             color: var(--text-muted);
             font-size: 16px;
+            margin: 0;
         }
 
-        .input-panel {
-            background: var(--card-bg);
-            border: 1px solid var(--border);
-            border-radius: 12px;
-            padding: 20px;
+        /* Filter Controls */
+        .controls {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
             margin-bottom: 32px;
         }
 
-        textarea {
-            width: 100%;
-            height: 90px;
-            background: #0f172a;
-            border: 1px solid var(--border);
-            color: var(--text-main);
-            border-radius: 8px;
-            padding: 12px;
-            box-sizing: border-box;
-            font-size: 14px;
-            resize: vertical;
-        }
-
-        button {
-            background: var(--accent);
-            color: #0f172a;
-            font-weight: 700;
-            border: none;
-            padding: 12px 24px;
-            border-radius: 8px;
-            cursor: pointer;
-            margin-top: 12px;
-            transition: opacity 0.2s;
-        }
-
-        button:hover {
-            opacity: 0.9;
-        }
-
-        .grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 20px;
-        }
-
-        .card {
+        .tab-btn {
             background: var(--card-bg);
-            border: 1px solid var(--border);
-            border-radius: 12px;
-            padding: 20px;
+            color: var(--text-muted);
+            border: 1px solid var(--border-color);
+            padding: 10px 24px;
+            border-radius: 30px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .tab-btn.active {
+            background: var(--accent-blue);
+            color: #0f172a;
+            border-color: var(--accent-blue);
+        }
+
+        /* News Cards Grid */
+        .news-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 24px;
+        }
+
+        .news-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            padding: 24px;
             display: flex;
             flex-direction: column;
             justify-content: space-between;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+            transition: transform 0.2s ease;
         }
 
-        .badge-container {
+        .news-card:hover {
+            transform: translateY(-4px);
+        }
+
+        .card-header {
             display: flex;
-            gap: 8px;
+            justify-content: space-between;
+            align-items: center;
             margin-bottom: 12px;
-            flex-wrap: wrap;
         }
 
-        .badge {
+        .region-badge {
             font-size: 11px;
             font-weight: 700;
-            padding: 4px 8px;
-            border-radius: 4px;
             text-transform: uppercase;
+            padding: 4px 10px;
+            border-radius: 20px;
+            background: rgba(56, 189, 248, 0.15);
+            color: var(--accent-blue);
+            border: 1px solid var(--accent-blue);
         }
 
-        .badge-verified {
-            background: rgba(34, 197, 94, 0.15);
-            color: var(--success);
-            border: 1px solid var(--success);
+        .verified-tag {
+            font-size: 11px;
+            color: var(--accent-green);
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 4px;
         }
 
-        .badge-single {
-            background: rgba(245, 158, 11, 0.15);
-            color: var(--warning);
-            border: 1px solid var(--warning);
-        }
-
-        .card-title {
+        .news-title {
             font-size: 18px;
             font-weight: 700;
-            margin-bottom: 10px;
+            line-height: 1.4;
+            margin-bottom: 14px;
+            color: var(--text-main);
         }
 
-        .card-section {
-            margin-top: 12px;
-        }
-
-        .section-label {
+        .section-title {
             font-size: 12px;
-            color: var(--accent);
             font-weight: 700;
             text-transform: uppercase;
-            margin-bottom: 4px;
+            color: var(--accent-blue);
+            margin-top: 14px;
+            margin-bottom: 6px;
         }
 
-        p, ul {
+        .summary-text, .importance-text {
             font-size: 14px;
             color: var(--text-muted);
+            line-height: 1.5;
             margin: 0;
-            padding-left: 18px;
         }
 
-        li {
-            margin-bottom: 4px;
+        .card-footer {
+            margin-top: 20px;
+            padding-top: 14px;
+            border-top: 1px solid var(--border-color);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .source-name {
+            font-size: 12px;
+            color: var(--text-muted);
+            font-weight: 500;
+        }
+
+        .source-link {
+            color: var(--accent-blue);
+            text-decoration: none;
+            font-size: 13px;
+            font-weight: 600;
+        }
+
+        .source-link:hover {
+            text-decoration: underline;
         }
     </style>
 </head>
@@ -159,17 +176,17 @@
 
 <div class="container">
     <header>
-        <h1>⚡ FinBites - Automated Finance News & Verification Engine</h1>
-        <p class="subtitle">Multi-source economic news aggregator with cross-outlet consensus verification</p>
+        <h1>⚡ FinBites</h1>
+        <p class="subtitle">Complex global finance news explained simply for students — without the technical jargon.</p>
     </header>
 
-    <div class="input-panel">
-        <label class="section-label" style="display: block; margin-bottom: 8px;">Parse & Verify Economic Announcement</label>
-        <textarea id="newsInput" placeholder="Paste headline or news excerpt from Moneycontrol, Screener, or Economic Times..."></textarea>
-        <button onclick="processNews()">Verify Consensus & Impact</button>
+    <div class="controls">
+        <button class="tab-btn active" onclick="filterNews('all', this)">All News</button>
+        <button class="tab-btn" onclick="filterNews('domestic', this)">🇮🇳 Domestic (India)</button>
+        <button class="tab-btn" onclick="filterNews('international', this)">🌐 International</button>
     </div>
 
-    <div class="grid" id="newsGrid"></div>
+    <div class="news-grid" id="newsContainer"></div>
 </div>
 
 <script src="app.js"></script>
