@@ -1,29 +1,22 @@
-# ⚡ FinBites - Automated Financial News & Cross-Verification Engine
+# ⚡ FinBites - Financial News for Students
 
-FinBites is a web-based financial news aggregator that parses live economic feeds, performs multi-source cross-referencing, and extracts concise "Why It Matters" takeaways while separating objective data from publisher commentary.
-
----
-
-## Key Features & Solution
-
-* **Multi-Source Cross-Corroboration:** Aggregates coverage of market events across independent financial feeds (e.g., Moneycontrol, Economic Times, Screener).
-* **Consensus Scoring Engine:** Evaluates whether numerical claims (EBITDA margins, revenue metrics, policy changes) are reported consistently across multiple sources.
-* **Fact vs. Editorial Separation:** Isolates verified regulatory figures from reporter speculation, tagging opinionated commentary as unverified sentiment.
-* **Bite-Sized Actionable Summaries:** Converts complex news articles into structured key points for non-finance professionals.
+FinBites is a student-focused financial news platform that breaks down complex domestic and international financial headlines into simple, jargon-free takeaways and actionable "Why It Matters" insights.
 
 ---
 
-## Verification Methodology
+## Features
 
-1. **Feed Aggregation:** Ingests headlines and article texts from news feeds.
-2. **Metric Extraction:** Identifies hard numerical data (percentages, revenue, debt metrics).
-3. **Cross-Source Matching:** Validates if identical figures appear across at least 3 independent media sources.
-4. **Source Ratings:**
-   * **High Consensus:** Claim appears consistently across multiple major outlets.
-   * **Single-Source Claim:** Claim appears in only one source and is flagged for manual verification.
+* **Domestic & International News Categorization:** Easily switch between Indian financial updates and global market headlines.
+* **Jargon-Free Summaries:** Designed specifically for students to stay informed without getting bogged down by complicated financial language.
+* **"Why It Matters to You":** Clear explanation of how macro-economic news directly impacts students, careers, and daily life.
+* **Direct Source Links:** Each card provides an explicit link leading users straight to the original published article (e.g., Moneycontrol, Economic Times, Reuters).
 
 ---
 
-## How to Run
+## Backend News Verification Logic
 
-1. Open `index.html` in any web browser or view via GitHub Pages.
+To ensure news accuracy without compromising the clean student-facing user interface, **FinBites executes source authentication in the background**:
+
+1. **Multi-Feed Ingestion:** Aggregates raw news from established, tier-1 financial publishers.
+2. **Cross-Outlet Corroboration:** Behind the scenes, the AI checks if core figures and announcements match across at least 3 independent feeds before serving the article.
+3. **Opinion vs. Fact Separation:** Extracts verified regulatory metrics while filtering out speculative reporter commentary.
