@@ -1,22 +1,22 @@
-# ⚡ FinBites - Financial News for Students
+# ⚡ FinBites - Engaging Financial News for Everyone
 
-FinBites is a student-focused financial news platform that breaks down complex domestic and international financial headlines into simple, jargon-free takeaways and actionable "Why It Matters" insights.
+FinBites is a financial news platform designed for anyone—students, professionals, or curious readers—who wants to stay updated on economic events without reading dense, technical jargon. It translates complex domestic and international news into clear, bite-sized summaries and practical "Why It Matters" takeaways.
 
 ---
 
 ## Features
 
-* **Domestic & International News Categorization:** Easily switch between Indian financial updates and global market headlines.
-* **Jargon-Free Summaries:** Designed specifically for students to stay informed without getting bogged down by complicated financial language.
-* **"Why It Matters to You":** Clear explanation of how macro-economic news directly impacts students, careers, and daily life.
-* **Direct Source Links:** Each card provides an explicit link leading users straight to the original published article (e.g., Moneycontrol, Economic Times, Reuters).
+* **Domestic & International Categories:** Easily switch between Indian financial developments and global market headlines.
+* **Jargon-Free Summaries:** Designed for quick reading, removing complex financial terminology so anyone can understand market events.
+* **"Why It Matters to You":** Clear context on how macroeconomic events directly impact everyday consumers, jobs, and personal finance.
+* **Direct Source Links:** Transparency built-in via direct links to original, tier-1 news articles (e.g., Moneycontrol, Economic Times, Reuters).
 
 ---
 
 ## Backend News Verification Logic
 
-To ensure news accuracy without compromising the clean student-facing user interface, **FinBites executes source authentication in the background**:
+To maintain accuracy and protect readers from unverified claims without cluttering the clean user interface, **FinBites performs authentication behind the scenes**:
 
-1. **Multi-Feed Ingestion:** Aggregates raw news from established, tier-1 financial publishers.
+1. **Multi-Feed Ingestion:** Ingests live news from established, reputable financial publishers.
 2. **Cross-Outlet Corroboration:** Behind the scenes, the AI checks if core figures and announcements match across at least 3 independent feeds before serving the article.
-3. **Opinion vs. Fact Separation:** Extracts verified regulatory metrics while filtering out speculative reporter commentary.
+3. **Opinion vs. Fact Separation:** Filters out subjective commentary and speculative opinions, highlighting verified metrics and regulatory announcements.
