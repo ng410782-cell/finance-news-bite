@@ -6,8 +6,8 @@ const newsFeed = [
         id: 1,
         category: 'domestic',
         title: 'RBI Keeps Interest Rates Unchanged to Control Inflation',
-        summary: 'The Reserve Bank of India has decided not to increase interest rates this quarter, keeping loan costs steady for home and student loans.',
-        whyItMatters: 'If you or your family have existing bank loans or plan to take a student loan, your monthly payments (EMIs) will remain stable.',
+        summary: 'The Reserve Bank of India has decided to keep interest rates steady this quarter, maintaining consistent borrowing costs across home, personal, and educational loans.',
+        whyItMatters: 'Existing loan interest rates remain unchanged, ensuring predictable monthly payments (EMIs) for households and retail borrowers.',
         source: 'Moneycontrol',
         sourceUrl: 'https://www.moneycontrol.com'
     },
@@ -15,26 +15,26 @@ const newsFeed = [
         id: 2,
         category: 'international',
         title: 'US Tech Sector Sees Major Surge in Artificial Intelligence Investments',
-        summary: 'Global tech firms are increasing spending on AI infrastructure, boosting stock performance across semiconductor and cloud companies.',
-        whyItMatters: 'This hiring and funding boom creates new career opportunities in tech-finance and signals strong long-term growth in global stock markets.',
+        summary: 'Global tech firms are expanding infrastructure spending in AI, boosting stock performance across semiconductor and cloud enterprise companies.',
+        whyItMatters: 'Capital inflows into AI technology drive innovation, market momentum, and strategic hiring across tech-adjacent sectors globally.',
         source: 'Reuters Financial',
         sourceUrl: 'https://www.reuters.com'
     },
     {
         id: 3,
         category: 'domestic',
-        title: 'New Tax Rules Simplified for First-Time Salaried Employees',
-        summary: 'Government updates income tax filing schedules to make tax returns simpler and quicker for young professionals entering the workforce.',
-        whyItMatters: 'When you graduate and start your first job, understanding your salary slip and tax deductions will be much easier and transparent.',
+        title: 'New Income Tax Filing Updates Simplified for First-Time Taxpayers',
+        summary: 'Government updates tax filing platforms to streamline returns and reduce processing time for newly salaried professionals.',
+        whyItMatters: 'Navigating salary deductions, tax rebates, and yearly return filings becomes far more transparent and straightforward.',
         source: 'Economic Times',
         sourceUrl: 'https://economictimes.indiatimes.com'
     },
     {
         id: 4,
         category: 'international',
-        title: 'Global Crude Oil Prices Drop Following Supply Increase',
-        summary: 'Major oil-producing nations have increased output, leading to a temporary decline in international crude oil benchmarks.',
-        whyItMatters: 'Lower global oil prices help reduce transport and fuel costs in India, helping control everyday prices for goods and food.',
+        title: 'Global Crude Oil Prices Drop Following Supply Expansion',
+        summary: 'Major oil-exporting nations have increased output, leading to a temporary decline in international crude oil benchmark prices.',
+        whyItMatters: 'Lower global oil prices reduce energy and freight costs, helping ease inflationary pressure on everyday consumer goods.',
         source: 'Bloomberg Markets',
         sourceUrl: 'https://www.bloomberg.com'
     }
